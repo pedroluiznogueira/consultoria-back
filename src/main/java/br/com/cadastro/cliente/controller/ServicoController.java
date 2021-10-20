@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/servico")
@@ -32,6 +33,7 @@ public class ServicoController {
         return new ResponseEntity<Servico>(servico, HttpStatus.OK);
     }
 
+    @PostMapping("find-by-cliente")
     public ResponseEntity<List<Servico>> findByCliente(@RequestBody Cliente cliente){
 
         List<Servico> servicos = servicoService.getServicosByClienteId(cliente.getId());
