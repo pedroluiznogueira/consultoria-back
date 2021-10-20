@@ -21,7 +21,6 @@ public class ClienteService {
         return clienteRepository.findServicoByTitulo(nome);
     }
 
-
     public List<Cliente> getClientes(){
         return clienteRepository.findAll();
     }

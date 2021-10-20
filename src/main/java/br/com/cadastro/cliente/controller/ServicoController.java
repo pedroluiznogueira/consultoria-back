@@ -1,5 +1,6 @@
 package br.com.cadastro.cliente.controller;
 
+import br.com.cadastro.cliente.domain.Cliente;
 import br.com.cadastro.cliente.domain.Servico;
 import br.com.cadastro.cliente.domain.StatusResponse;
 import br.com.cadastro.cliente.domain.Usuario;
@@ -18,6 +19,12 @@ public class ServicoController {
 
     @Autowired
     private ServicoService servicoService;
+
+    @PostMapping("pesquisa")
+    public ResponseEntity<List<Servico>> pesquisar(@RequestBody Servico servicoPesq) {
+        List<Servico> servico = servicoService.pesquisar(servicoPesq.getTitulo());
+        return new ResponseEntity<List<Servico>>(servico, HttpStatus.OK);
+    }
 
     @GetMapping
     public List<Servico> getServicos() {
