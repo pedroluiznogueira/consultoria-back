@@ -28,6 +28,10 @@ public class ServicoService {
         return servicoRepository.findAll();
     }
 
+    public List<Servico> getServicosByClienteId(Long id){
+        return servicoRepository.findServicoByCliente(id);
+    }
+
     public Servico findServicoById(Long id){
         return servicoRepository.findById(id).get();
     }

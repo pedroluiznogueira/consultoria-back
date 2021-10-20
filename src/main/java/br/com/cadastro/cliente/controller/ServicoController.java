@@ -32,6 +32,13 @@ public class ServicoController {
         return new ResponseEntity<Servico>(servico, HttpStatus.OK);
     }
 
+    public ResponseEntity<List<Servico>> findByCliente(@RequestBody Cliente cliente){
+
+        List<Servico> servicos = servicoService.getServicosByClienteId(cliente.getId());
+
+        return new ResponseEntity<List<Servico>>(servicos, HttpStatus.OK);
+    }
+
     @GetMapping
     public List<Servico> getServicos() {
         return servicoService.getServicos();
