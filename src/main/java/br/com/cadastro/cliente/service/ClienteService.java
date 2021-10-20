@@ -39,6 +39,10 @@ public class ClienteService {
 
     }
 
+    public Cliente findClienteById(Long id){
+        return clienteRepository.findById(id).get();
+    }
+
     public StatusResponse dropCliente(long idCliente) {
 
         if (clienteRepository.findById(idCliente) == null){

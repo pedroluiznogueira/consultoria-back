@@ -28,6 +28,10 @@ public class ServicoService {
         return servicoRepository.findAll();
     }
 
+    public Servico findServicoById(Long id){
+        return servicoRepository.findById(id).get();
+    }
+
     public StatusResponse insertServico(Servico novoServico){
 
         Cliente cliente = clienteRepository.getById(novoServico.getCliente().getId());

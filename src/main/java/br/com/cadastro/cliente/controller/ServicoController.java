@@ -26,6 +26,12 @@ public class ServicoController {
         return new ResponseEntity<List<Servico>>(servicos, HttpStatus.OK);
     }
 
+    @GetMapping("pesquisa/{id}")
+    public ResponseEntity<Servico> findById(@PathVariable ("id") Long id) {
+        Servico servico = servicoService.findServicoById(id);
+        return new ResponseEntity<Servico>(servico, HttpStatus.OK);
+    }
+
     @GetMapping
     public List<Servico> getServicos() {
         return servicoService.getServicos();
