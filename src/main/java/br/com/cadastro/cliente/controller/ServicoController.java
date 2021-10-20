@@ -22,8 +22,8 @@ public class ServicoController {
 
     @PostMapping("pesquisa")
     public ResponseEntity<List<Servico>> pesquisar(@RequestBody Servico servicoPesq) {
-        List<Servico> servico = servicoService.pesquisar(servicoPesq.getTitulo());
-        return new ResponseEntity<List<Servico>>(servico, HttpStatus.OK);
+        List<Servico> servicos = servicoService.pesquisar(servicoPesq.getTitulo());
+        return new ResponseEntity<List<Servico>>(servicos, HttpStatus.OK);
     }
 
     @GetMapping
