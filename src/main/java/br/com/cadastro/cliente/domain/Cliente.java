@@ -22,7 +22,8 @@ public class Cliente {
     @NotNull
     private String email;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany
+    @JoinColumn(name = "cliente_id")
     private List<Servico> servicos;
 
     public Cliente() {
