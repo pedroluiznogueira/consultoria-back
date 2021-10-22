@@ -31,8 +31,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Usuario> autenticar(@RequestBody DadosLogin dadosLogin){
-        Usuario user = usuarioService.autenticar(dadosLogin);
+    public ResponseEntity<Usuario> autenticar(@RequestBody Usuario usuario){
+        Usuario user = usuarioService.autenticar(usuario);
         return new ResponseEntity<Usuario>(user, HttpStatus.ACCEPTED);
     }
 
