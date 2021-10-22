@@ -31,16 +31,15 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UsuarioAuthDTO> autenticar(@RequestBody DadosLogin dadosLogin){
+    public ResponseEntity<Usuario> autenticar(@RequestBody DadosLogin dadosLogin){
         Usuario user = usuarioService.autenticar(dadosLogin);
-        return new ResponseEntity<UsuarioAuthDTO>(UsuarioAuthDTO.toDTO(user, "Bearer "), HttpStatus.ACCEPTED);
+        return new ResponseEntity<Usuario>(user, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/cadastro")
-    public ResponseEntity<UsuarioAuthDTO> registrate(@RequestBody UsuarioRegDTO usuarioRegDTO){
-        Usuario user = usuarioService.registrar(usuarioRegDTO.toUsuario());
-
-        return  new ResponseEntity<UsuarioAuthDTO>(UsuarioAuthDTO.toDTO(user, "Bearer "), HttpStatus.CREATED);
+    public ResponseEntity<Usuario> registrate(@RequestBody Usuario usuario){
+        Usuario user = usuarioService.registrar(usuario);
+        return  new ResponseEntity<Usuario>(user, HttpStatus.CREATED);
     }
 
 }
