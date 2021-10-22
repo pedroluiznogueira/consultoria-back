@@ -1,18 +1,11 @@
 package br.com.cadastro.cliente.controller;
 
-import br.com.cadastro.cliente.domain.StatusResponse;
 import br.com.cadastro.cliente.domain.Usuario;
-import br.com.cadastro.cliente.dto.DadosLogin;
-import br.com.cadastro.cliente.dto.UsuarioAuthDTO;
-import br.com.cadastro.cliente.dto.UsuarioRegDTO;
 import br.com.cadastro.cliente.service.UsuarioService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
