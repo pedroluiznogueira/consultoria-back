@@ -35,7 +35,6 @@ public class CursoService {
 
     // cadastrar curso
     public StatusResponse insertCurso(Curso novoCurso){
-
         Professor professor = clienteRepository.getById(novoCurso.getProfessor().getId());
         List<Curso> cursos = cursoRepository.findAll();
 

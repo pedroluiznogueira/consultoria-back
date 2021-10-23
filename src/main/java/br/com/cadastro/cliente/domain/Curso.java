@@ -90,7 +90,7 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Servico{" +
+        return "Curso{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", descricao='" + descricao + '\'' +
