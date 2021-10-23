@@ -1,14 +1,11 @@
 package br.com.cadastro.cliente.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class Servico {
+public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,18 +21,18 @@ public class Servico {
     private Double valor;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 
-    public Servico() {
+    public Curso() {
     }
 
-    public Servico(Long id, String titulo, String descricao, Double valor, Cliente cliente) {
+    public Curso(Long id, String titulo, String descricao, Double valor, Professor professor) {
         this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.valor = valor;
-        this.cliente = cliente;
+        this.professor = professor;
     }
 
     public Long getId() {
@@ -70,20 +67,20 @@ public class Servico {
         this.valor = valor;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Servico servico = (Servico) o;
-        return Objects.equals(id, servico.id) && Objects.equals(titulo, servico.titulo) && Objects.equals(descricao, servico.descricao) && Objects.equals(valor, servico.valor);
+        Curso curso = (Curso) o;
+        return Objects.equals(id, curso.id) && Objects.equals(titulo, curso.titulo) && Objects.equals(descricao, curso.descricao) && Objects.equals(valor, curso.valor);
     }
 
     @Override

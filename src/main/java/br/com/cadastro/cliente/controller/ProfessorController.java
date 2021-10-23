@@ -1,6 +1,6 @@
 package br.com.cadastro.cliente.controller;
 
-import br.com.cadastro.cliente.domain.Cliente;
+import br.com.cadastro.cliente.domain.Professor;
 import br.com.cadastro.cliente.domain.StatusResponse;
 import br.com.cadastro.cliente.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,49 +16,49 @@ import java.util.List;
 public class ProfessorController {
 
     @Autowired
-    private ProfessorService clienteService;
+    private ProfessorService professorService;
 
     // todos professores
-    @GetMapping("/professores")
-    public ResponseEntity<List<Cliente>> getClientes() {
-        List<Cliente> lista = clienteService.getClientes();
-        return new ResponseEntity<List<Cliente>>(lista, HttpStatus.OK);
+    @GetMapping("professores")
+    public ResponseEntity<List<Professor>> getProfessores() {
+        List<Professor> lista = professorService.getProfessores();
+        return new ResponseEntity<List<Professor>>(lista, HttpStatus.OK);
     }
 
     // professor por id
     @GetMapping("find/{id}")
-    public ResponseEntity<Cliente> findById(@PathVariable ("id") Long id) {
-        Cliente cliente = clienteService.findClienteById(id);
-        return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
+    public ResponseEntity<Professor> findById(@PathVariable ("id") Long id) {
+        Professor professor = professorService.findProfessorById(id);
+        return new ResponseEntity<Professor>(professor, HttpStatus.OK);
     }
 
     // cadastrar professor
-    @PostMapping("/create")
-    public ResponseEntity<StatusResponse> insertCliente(@RequestBody Cliente cliente) {
-        StatusResponse statusResponse = clienteService.insertCliente(cliente);
+    @PostMapping("create")
+    public ResponseEntity<StatusResponse> insertProfessor(@RequestBody Professor professor) {
+        StatusResponse statusResponse = professorService.insertProfessor(professor);
         return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
     }
 
 
     // excluir professor
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<StatusResponse> dropCliente(@PathVariable ("id") Long idCliente) {
-        StatusResponse statusResponse = clienteService.dropCliente(idCliente);
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<StatusResponse> dropProfessor(@PathVariable ("id") Long idCliente) {
+        StatusResponse statusResponse = professorService.dropProfessor(idCliente);
         return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
     }
 
     // atualizar professor
-    @PutMapping("/update")
-    public ResponseEntity<StatusResponse> updateCliente(@RequestBody Cliente cliente) {
-        StatusResponse statusResponse = clienteService.updateCliente(cliente);
+    @PutMapping("update")
+    public ResponseEntity<StatusResponse> updateProfessor(@RequestBody Professor professor) {
+        StatusResponse statusResponse = professorService.updateProfessor(professor);
 
         return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
     }
 
     // fazer pesquisa por professores
-    @PostMapping("/search")
-    public ResponseEntity<List<Cliente>> pesquisar(@RequestBody Cliente cliente) {
-        List<Cliente> clientes = clienteService.pesquisar(cliente.getNome());
-        return new ResponseEntity<List<Cliente>>(clientes, HttpStatus.OK);
+    @PostMapping("search")
+    public ResponseEntity<List<Professor>> pesquisar(@RequestBody Professor professor) {
+        List<Professor> professores = professorService.pesquisar(professor.getNome());
+        return new ResponseEntity<List<Professor>>(professores, HttpStatus.OK);
     }
 }

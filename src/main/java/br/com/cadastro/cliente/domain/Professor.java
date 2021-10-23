@@ -1,14 +1,12 @@
 package br.com.cadastro.cliente.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Cliente {
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +22,14 @@ public class Cliente {
     private String email;
 
     @OneToMany
-    @JoinColumn(name = "cliente_id")
-    private List<Servico> servicos;
+    @JoinColumn(name = "professor_id")
+    private List<Curso> cursos;
 
-    public Cliente() {
+    public Professor() {
 
     }
 
-    public Cliente(Long id, String nome, String sobrenome, String email) {
+    public Professor(Long id, String nome, String sobrenome, String email) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -74,8 +72,8 @@ public class Cliente {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cliente cliente = (Cliente) o;
-        return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome) && Objects.equals(sobrenome, cliente.sobrenome) && Objects.equals(email, cliente.email);
+        Professor professor = (Professor) o;
+        return Objects.equals(id, professor.id) && Objects.equals(nome, professor.nome) && Objects.equals(sobrenome, professor.sobrenome) && Objects.equals(email, professor.email);
     }
 
     @Override
@@ -85,7 +83,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +

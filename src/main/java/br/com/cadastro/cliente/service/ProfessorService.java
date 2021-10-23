@@ -1,6 +1,6 @@
 package br.com.cadastro.cliente.service;
 
-import br.com.cadastro.cliente.domain.Cliente;
+import br.com.cadastro.cliente.domain.Professor;
 import br.com.cadastro.cliente.domain.StatusResponse;
 import br.com.cadastro.cliente.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,57 +12,57 @@ import java.util.List;
 public class ProfessorService {
 
     @Autowired
-    private ProfessorRepository clienteRepository;
+    private ProfessorRepository professorRepository;
 
-    public List<Cliente> pesquisar(String nome) {
-        return clienteRepository.findServicoByTitulo(nome);
+    public List<Professor> getProfessores(){
+        return professorRepository.findAll();
     }
 
-    public List<Cliente> getClientes(){
-        return clienteRepository.findAll();
-    }
+    public StatusResponse insertProfessor(Professor novoProfessor) {
+        List<Professor> professores = professorRepository.findAll();
 
-    public StatusResponse insertCliente(Cliente novoCliente) {
-        List<Cliente> clientes = clienteRepository.findAll();
-
-        for (Cliente cliente: clientes){
-            if (cliente.equals(novoCliente)){
+        for (Professor professor: professores){
+            if (professor.equals(novoProfessor)){
                 return new StatusResponse("Cliente já existe", "erro");
             }
         }
 
-        clienteRepository.save(novoCliente);
+        professorRepository.save(novoProfessor);
         return new StatusResponse("Cliente cadastrado com sucesso", "sucesso");
 
     }
 
-    public Cliente findClienteById(Long id){
-        return clienteRepository.findById(id).get();
+    public Professor findProfessorById(Long id){
+        return professorRepository.findById(id).get();
     }
 
-    public StatusResponse dropCliente(long idCliente) {
+    public StatusResponse dropProfessor(Long id) {
 
-        if (clienteRepository.findById(idCliente) == null){
+        if (professorRepository.findById(id) == null){
             return new StatusResponse("Cliente não existe", "erro");
         }
 
-        clienteRepository.deleteById(idCliente);
+        professorRepository.deleteById(id);
         return new StatusResponse("Cliente deletado com sucesso", "sucesso");
     }
 
-    public StatusResponse updateCliente(Cliente novoCliente) {
+    public StatusResponse updateProfessor(Professor novoProfessor) {
 
-        Cliente cliente = clienteRepository.findById(novoCliente.getId()).get();
+        Professor professor = professorRepository.findById(novoProfessor.getId()).get();
 
-        if (novoCliente.getNome() == "" || novoCliente.getEmail() == "" || novoCliente.getSobrenome() == ""){
+        if (novoProfessor.getNome() == "" || novoProfessor.getEmail() == "" || novoProfessor.getSobrenome() == ""){
             return new StatusResponse("Dados invalidos", "erro");
         }
 
-        cliente.setNome(novoCliente.getNome());
-        cliente.setSobrenome(novoCliente.getSobrenome());
-        cliente.setEmail(novoCliente.getEmail());
+        professor.setNome(novoProfessor.getNome());
+        professor.setSobrenome(novoProfessor.getSobrenome());
+        professor.setEmail(novoProfessor.getEmail());
 
-        clienteRepository.save(cliente);
+        professorRepository.save(professor);
         return new StatusResponse("Cliente alterado com sucesso", "sucesso");
+    }
+
+    public List<Professor> pesquisar(String nome) {
+        return professorRepository.findServicoByTitulo(nome);
     }
 }
