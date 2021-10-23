@@ -1,21 +1,18 @@
 package br.com.cadastro.cliente.service;
 
 import br.com.cadastro.cliente.domain.Cliente;
-import br.com.cadastro.cliente.domain.Servico;
 import br.com.cadastro.cliente.domain.StatusResponse;
-import br.com.cadastro.cliente.repository.ClienteRepository;
-import ch.qos.logback.core.net.server.Client;
+import br.com.cadastro.cliente.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ClienteService {
+public class ProfessorService {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ProfessorRepository clienteRepository;
 
     public List<Cliente> pesquisar(String nome) {
         return clienteRepository.findServicoByTitulo(nome);

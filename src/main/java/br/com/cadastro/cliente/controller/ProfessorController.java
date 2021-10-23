@@ -1,24 +1,22 @@
 package br.com.cadastro.cliente.controller;
 
 import br.com.cadastro.cliente.domain.Cliente;
-import br.com.cadastro.cliente.domain.Servico;
 import br.com.cadastro.cliente.domain.StatusResponse;
-import br.com.cadastro.cliente.service.ClienteService;
+import br.com.cadastro.cliente.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/cliente")
 @CrossOrigin("*")
-public class ClienteController {
+public class ProfessorController {
 
     @Autowired
-    private ClienteService clienteService;
+    private ProfessorService clienteService;
 
     @PostMapping("pesquisa")
     public ResponseEntity<List<Cliente>> pesquisar(@RequestBody Cliente cliente) {
