@@ -11,11 +11,15 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String imagem;
+
     @NotNull
     private String titulo;
 
     @NotNull
     private String descricao;
+
+    private String requisitos;
 
     @NotNull
     private Double valor;
@@ -73,6 +77,22 @@ public class Curso {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getRequisitos() {
+        return requisitos;
+    }
+
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
     }
 
     @Override

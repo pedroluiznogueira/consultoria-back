@@ -12,14 +12,20 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String imagem;
+
+    @NotNull
+    private String email;
+
     @NotNull
     private String nome;
 
     @NotNull
     private String sobrenome;
 
-    @NotNull
-    private String email;
+    private String resumo;
+
+    private String sobre;
 
     @OneToMany
     @JoinColumn(name = "professor_id")
@@ -66,6 +72,30 @@ public class Professor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
+    }
+
+    public String getSobre() {
+        return sobre;
+    }
+
+    public void setSobre(String sobre) {
+        this.sobre = sobre;
     }
 
     @Override
