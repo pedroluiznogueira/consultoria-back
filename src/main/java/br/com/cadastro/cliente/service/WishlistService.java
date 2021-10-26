@@ -23,4 +23,8 @@ public class WishlistService {
     public List<Wishlist> getWishlists() {
         return wishlistRepository.findAll();
     }
+
+    public Wishlist getWishlistByUsuario(Long id) {
+        return wishlistRepository.findByUsuarioId(id);
+    }
 }
