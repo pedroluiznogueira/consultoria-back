@@ -10,17 +10,18 @@ public class Wishlist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Wishlist() {
-    }
-
     @ManyToMany(mappedBy = "wishlists")
     List<Curso> cursos;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
-    public Wishlist(Long id, Curso curso) {
+    public Wishlist() {
+    }
+
+    public Wishlist(Long id, Usuario usuario) {
         this.id = id;
+        this.usuario = usuario;
     }
 
     public Long getId() {
