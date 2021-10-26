@@ -1,8 +1,7 @@
 package br.com.cadastro.cliente.controller;
 
-import br.com.cadastro.cliente.domain.Professor;
-import br.com.cadastro.cliente.domain.Curso;
-import br.com.cadastro.cliente.domain.StatusResponse;
+import br.com.cadastro.cliente.domain.*;
+import br.com.cadastro.cliente.repository.CursoRepository;
 import br.com.cadastro.cliente.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +17,9 @@ public class CursoController {
 
     @Autowired
     private CursoService cursoService;
+
+    @Autowired
+    private CursoRepository cursoRepository;
 
     // todos os cursos
     @GetMapping("cursos")
@@ -65,5 +67,14 @@ public class CursoController {
     public ResponseEntity<List<Curso>> pesquisar(@RequestBody Curso cursoPesq) {
         List<Curso> cursos = cursoService.pesquisar(cursoPesq.getTitulo());
         return new ResponseEntity<List<Curso>>(cursos, HttpStatus.OK);
+    }
+
+    @PostMapping("teste")
+    public ResponseEntity<Object> teste(@RequestBody Cursowishlist cw) {
+        cw.getWishlist().getCursos().add(cw.getCurso());
+        cw.getCurso().getWishlists().add(cw.getWishlist());
+
+        cursoRepository.save(cw.getCurso());
+        return new ResponseEntity<>(cw, HttpStatus.OK);
     }
 }

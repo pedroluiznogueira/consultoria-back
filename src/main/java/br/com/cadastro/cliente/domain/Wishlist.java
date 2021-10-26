@@ -40,4 +40,12 @@ public class Wishlist {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
 }

@@ -1,5 +1,7 @@
 package br.com.cadastro.cliente.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -100,6 +102,14 @@ public class Curso {
 
     public void setRequisitos(String requisitos) {
         this.requisitos = requisitos;
+    }
+
+    public List<Wishlist> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(List<Wishlist> wishlists) {
+        this.wishlists = wishlists;
     }
 
     @Override

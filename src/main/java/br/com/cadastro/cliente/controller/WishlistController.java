@@ -37,9 +37,4 @@ public class WishlistController {
         Wishlist wishList = wishlistService.getWishlistByUsuario(usuario.getId());
         return new ResponseEntity<>(wishList, HttpStatus.OK);
     }
-
-    @PostMapping("teste")
-    public ResponseEntity<Object> teste(@RequestBody Object obj) {
-        return new ResponseEntity<>(obj, HttpStatus.OK);
-    }
 }
