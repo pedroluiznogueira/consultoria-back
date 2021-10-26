@@ -11,4 +11,6 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
 
     @Query(value = "select * from Curso where professor_id = ?1", nativeQuery = true)
     List<Curso> findCursoByProfessor(Long id);
+
+    List<Long> findCursosIdByWishlistId(Long id);
 }
