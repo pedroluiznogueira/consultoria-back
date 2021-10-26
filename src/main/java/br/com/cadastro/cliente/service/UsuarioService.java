@@ -21,7 +21,7 @@ public class UsuarioService {
     }
 
     public Usuario getUsuarioByToken(String token) {
-        return usuarioRepository.findUsuarioByToken(token);
+        return usuarioRepository.findByToken(token).orElseThrow(IllegalArgumentException::new);
     }
 
     public Usuario autenticar(Usuario usuario){

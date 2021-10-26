@@ -26,6 +26,7 @@ public class UsuarioController {
     @PostMapping("/find/token")
     public ResponseEntity<Usuario> getUsuarioByToken(@RequestBody Usuario usuarioToken) {
         Usuario usuario = usuarioService.getUsuarioByToken(usuarioToken.getToken());
+        System.out.println(usuario);
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
 
