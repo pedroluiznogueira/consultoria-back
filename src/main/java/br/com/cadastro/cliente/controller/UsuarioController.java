@@ -23,6 +23,12 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
     }
 
+    @PostMapping("/find/token")
+    public ResponseEntity<Usuario> getUsuarioByToken(@RequestBody Usuario usuarioToken) {
+        Usuario usuario = usuarioService.getUsuarioByToken(usuarioToken.getToken());
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<Usuario> autenticar(@RequestBody Usuario usuario){
         Usuario user = usuarioService.autenticar(usuario);

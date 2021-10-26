@@ -20,6 +20,10 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public Usuario getUsuarioByToken(String token) {
+        return usuarioRepository.findUsuarioByToken(token);
+    }
+
     public Usuario autenticar(Usuario usuario){
         Usuario user = usuarioRepository.findByEmail(usuario.getEmail()).orElseThrow(IllegalArgumentException::new);
 
