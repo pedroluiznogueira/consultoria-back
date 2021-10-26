@@ -2,6 +2,7 @@ package br.com.cadastro.cliente.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,10 @@ public class Curso {
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
+
+    @OneToMany
+    @JoinColumn(name = "curso_id")
+    private List<Wishlist> wishlists;
 
     public Curso() {
     }
@@ -116,5 +121,13 @@ public class Curso {
                 ", descricao='" + descricao + '\'' +
                 ", valor=" + valor +
                 '}';
+    }
+
+    public List<Wishlist> getWishlists() {
+        return wishlists;
+    }
+
+    public void setWishlists(List<Wishlist> wishlists) {
+        this.wishlists = wishlists;
     }
 }
