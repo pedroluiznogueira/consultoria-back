@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,8 @@ public class Curso {
     @JoinTable(name = "curso_wishlist",
     joinColumns = @JoinColumn(name = "curso_id"),
     inverseJoinColumns = @JoinColumn(name = "wishlist_id"))
-    private List<Wishlist> wishlists;
+    @JsonIgnore
+    private List<Wishlist> wishlists = new ArrayList<>();
 
     public Curso() {
     }
