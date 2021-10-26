@@ -19,8 +19,8 @@ public class Usuario {
     private String tipo;
     private String token;
 
-    @OneToOne(mappedBy = "usuario")
-    private Wishlist wishlist;
+    @OneToMany(mappedBy = "usuario")
+    private List<Wishlist> wishlist;
 
     public Usuario() {
     }

@@ -13,7 +13,8 @@ public class Wishlist {
     @ManyToMany(mappedBy = "wishlists")
     List<Curso> cursos;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     public Wishlist() {
