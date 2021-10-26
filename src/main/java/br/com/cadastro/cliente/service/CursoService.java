@@ -1,5 +1,6 @@
 package br.com.cadastro.cliente.service;
 
+import br.com.cadastro.cliente.domain.Cursowishlist;
 import br.com.cadastro.cliente.domain.Professor;
 import br.com.cadastro.cliente.domain.Curso;
 import br.com.cadastro.cliente.domain.StatusResponse;
@@ -81,5 +82,13 @@ public class CursoService {
     // fazer pesquisa por cursos
     public List<Curso> pesquisar(String titulo) {
         return cursoRepository.findCursoByTitulo(titulo);
+    }
+
+    public StatusResponse addCursoWish(Cursowishlist cw) {
+        cw.getWishlist().getCursos().add(cw.getCurso());
+        cw.getCurso().getWishlists().add(cw.getWishlist());
+
+        cursoRepository.save(cw.getCurso());
+        return new StatusResponse("Curso adicionado à Wishlist", "sucesso");
     }
 }

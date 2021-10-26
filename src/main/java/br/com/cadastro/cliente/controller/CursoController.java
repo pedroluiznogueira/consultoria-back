@@ -70,11 +70,10 @@ public class CursoController {
     }
 
     @PostMapping("teste")
-    public ResponseEntity<Object> teste(@RequestBody Cursowishlist cw) {
-        cw.getWishlist().getCursos().add(cw.getCurso());
-        cw.getCurso().getWishlists().add(cw.getWishlist());
-
-        cursoRepository.save(cw.getCurso());
-        return new ResponseEntity<>(cw, HttpStatus.OK);
+    public ResponseEntity<StatusResponse> addCursoWish(@RequestBody Cursowishlist cw) {
+        StatusResponse resp = cursoService.addCursoWish(cw);
+        return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
+
 }
