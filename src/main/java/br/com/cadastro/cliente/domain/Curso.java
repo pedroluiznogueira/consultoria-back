@@ -122,12 +122,4 @@ public class Curso {
                 ", valor=" + valor +
                 '}';
     }
-
-    public List<Wishlist> getWishlists() {
-        return wishlists;
-    }
-
-    public void setWishlists(List<Wishlist> wishlists) {
-        this.wishlists = wishlists;
-    }
 }

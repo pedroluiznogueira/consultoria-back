@@ -13,8 +13,9 @@ public class Wishlist {
     public Wishlist() {
     }
 
-    public Wishlist(Long id) {
+    public Wishlist(Long id, Curso curso) {
         this.id = id;
+        this.curso = curso;
     }
 
     @ManyToOne
