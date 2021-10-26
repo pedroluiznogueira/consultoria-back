@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("wishlist")
 @CrossOrigin("*")
@@ -22,4 +24,11 @@ public class WishlistController {
         StatusResponse statusResponse = wishlistService.createWishlist(wishlist);
         return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
     }
+
+    @GetMapping("get")
+    public ResponseEntity<List<Wishlist>> getWishlists() {
+        List<Wishlist> wishList = wishlistService.getWishlists();
+        return new ResponseEntity<>(wishList, HttpStatus.OK);
+    }
+
 }

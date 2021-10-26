@@ -29,8 +29,10 @@ public class Curso {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @OneToMany
-    @JoinColumn(name = "curso_id")
+    @ManyToMany
+    @JoinTable(name = "curso_wishlist",
+    joinColumns = @JoinColumn(name = "curso_id"),
+    inverseJoinColumns = @JoinColumn(name = "wishlist_id"))
     private List<Wishlist> wishlists;
 
     public Curso() {

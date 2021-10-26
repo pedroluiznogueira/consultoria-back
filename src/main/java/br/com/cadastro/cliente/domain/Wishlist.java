@@ -13,21 +13,14 @@ public class Wishlist {
     public Wishlist() {
     }
 
+    @ManyToMany(mappedBy = "wishlists")
+    List<Curso> cursos;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Usuario usuario;
+
     public Wishlist(Long id, Curso curso) {
         this.id = id;
-        this.curso = curso;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
 
     public Long getId() {
@@ -36,5 +29,13 @@ public class Wishlist {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -2,6 +2,7 @@ package br.com.cadastro.cliente.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +18,9 @@ public class Usuario {
     private boolean logado;
     private String tipo;
     private String token;
+
+    @OneToOne(mappedBy = "usuario")
+    private Wishlist wishlist;
 
     public Usuario() {
     }
