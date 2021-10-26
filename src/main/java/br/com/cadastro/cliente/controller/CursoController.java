@@ -80,4 +80,10 @@ public class CursoController {
         List<Long> ids = cursoRepository.findCursosIdByWishlistId(wishlist.getId());
         return new ResponseEntity<>(ids, HttpStatus.OK);
     }
+
+    @PostMapping("cursos/wish/all")
+    public ResponseEntity<List<Curso>> getCursosWishAll(@RequestBody List<Long> idsCursos) {
+        List<Curso> cursos = cursoService.getCursosWishAll(idsCursos);
+        return new ResponseEntity<>(cursos, HttpStatus.OK);
+    }
 }

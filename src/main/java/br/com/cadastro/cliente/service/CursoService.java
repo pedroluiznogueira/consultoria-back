@@ -9,6 +9,7 @@ import br.com.cadastro.cliente.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -90,5 +91,15 @@ public class CursoService {
 
         cursoRepository.save(cw.getCurso());
         return new StatusResponse("Curso adicionado à Wishlist", "sucesso");
+    }
+
+    public List<Curso> getCursosWishAll(List<Long> idsCursos) {
+        List<Curso> cursos = new ArrayList<>();
+
+        for (Long id : idsCursos) {
+            Curso curso = cursoRepository.findCursoById(id);
+            cursos.add(curso);
+        }
+        return cursos;
     }
 }
