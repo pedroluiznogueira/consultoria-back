@@ -102,4 +102,14 @@ public class CursoService {
         }
         return cursos;
     }
+
+    public List<Curso> cursosByCursos(List<Curso> cursos) {
+        List<Curso> cursosDb = new ArrayList<>();
+
+        for (Curso curso: cursos){
+            cursosDb.add(cursoRepository.findCursoById(curso.getId()));
+        }
+
+        return cursosDb;
+    }
 }
