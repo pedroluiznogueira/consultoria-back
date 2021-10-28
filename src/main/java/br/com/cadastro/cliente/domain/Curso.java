@@ -39,6 +39,13 @@ public class Curso {
     @JsonIgnore
     private List<Wishlist> wishlists = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "curso_pedido",
+            joinColumns = @JoinColumn(name = "curso_id"),
+            inverseJoinColumns = @JoinColumn(name = "pedido_id"))
+    @JsonIgnore
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Curso() {
     }
 
