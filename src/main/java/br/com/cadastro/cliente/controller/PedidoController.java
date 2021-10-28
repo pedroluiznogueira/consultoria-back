@@ -15,8 +15,6 @@ public class PedidoController {
 
     @PostMapping("/pedido")
     public Usuario insertPedido(@RequestBody Usuario usuario){
-        Usuario usuarioDb = pedidoService.insertPedido(usuario);
-
-        return  usuarioDb;
+        return pedidoService.insertPedido(usuario);
     }
 }
