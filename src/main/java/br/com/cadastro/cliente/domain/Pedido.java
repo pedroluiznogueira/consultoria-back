@@ -12,6 +12,8 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private double valorTotal;
+
     @ManyToMany(mappedBy = "pedidos")
     List<Curso> cursos;
 
@@ -44,4 +46,11 @@ public class Pedido {
         this.usuario = usuario;
     }
 
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 }

@@ -42,6 +42,7 @@ public class PedidoService {
                     Pedido newPedido = new Pedido();
                     newPedido.setUsuario(newUsuario);
                     newPedido.setCursos(cursos);
+                    newPedido.setValorTotal(pedido.getValorTotal());
 
                     pedidoRepository.save(newPedido);
 
