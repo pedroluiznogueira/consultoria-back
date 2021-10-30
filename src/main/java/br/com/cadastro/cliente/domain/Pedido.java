@@ -20,6 +20,8 @@ public class Pedido {
     @JsonIgnore
     private Usuario usuario;
 
+    private Double valorTotal;
+
     public Long getId() {
         return id;
     }
@@ -44,4 +46,11 @@ public class Pedido {
         this.usuario = usuario;
     }
 
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 }
