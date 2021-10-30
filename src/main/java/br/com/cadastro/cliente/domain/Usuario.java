@@ -20,6 +20,7 @@ public class Usuario {
     private boolean logado;
     private String tipo;
     private String token;
+    private String imagem;
 
     @OneToMany(mappedBy = "usuario")
     private List<Wishlist> wishlist;
@@ -130,6 +131,14 @@ public class Usuario {
 
     public String getToken() {
         return token;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public void setToken(String token) {
