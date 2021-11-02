@@ -43,9 +43,9 @@ public class CursoController {
 
     // cadastrar curso
     @PostMapping("create")
-    public ResponseEntity<StatusResponse> insertCurso(@RequestBody Curso curso) {
-        StatusResponse statusResponse = cursoService.insertCurso(curso);
-        return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
+    public ResponseEntity<Curso> insertCurso(@RequestBody Curso curso) {
+        Curso cur = cursoService.insertCurso(curso);
+        return new ResponseEntity<Curso>(cur, HttpStatus.OK);
     }
 
     // excluir curso

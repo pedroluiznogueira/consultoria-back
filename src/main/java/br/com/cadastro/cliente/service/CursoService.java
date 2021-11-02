@@ -36,20 +36,14 @@ public class CursoService {
     }
 
     // cadastrar curso
-    public StatusResponse insertCurso(Curso novoCurso){
+    public Curso insertCurso(Curso novoCurso){
         Professor professor = professorRepository.findByEmail(novoCurso.getProfessor().getEmail());
         List<Curso> cursos = cursoRepository.findAll();
-
-        for (Curso curso : cursos){
-            if (curso.equals(novoCurso)){
-                return new StatusResponse("Serviço já existe", "erro");
-            }
-        }
 
         novoCurso.setProfessor(professor);
 
         cursoRepository.save(novoCurso);
-        return new StatusResponse("Serviço cadastrado com sucesso", "sucesso");
+        return novoCurso;
     }
 
     // excluir curso
