@@ -18,17 +18,11 @@ public class ProfessorService {
         return professorRepository.findAll();
     }
 
-    public StatusResponse insertProfessor(Professor novoProfessor) {
+    public Professor insertProfessor(Professor novoProfessor) {
         List<Professor> professores = professorRepository.findAll();
 
-        for (Professor professor: professores){
-            if (professor.equals(novoProfessor)){
-                return new StatusResponse("Cliente já existe", "erro");
-            }
-        }
-
         professorRepository.save(novoProfessor);
-        return new StatusResponse("Cliente cadastrado com sucesso", "sucesso");
+        return novoProfessor;
 
     }
 
@@ -64,5 +58,9 @@ public class ProfessorService {
 
     public List<Professor> pesquisar(String nome) {
         return professorRepository.findServicoByTitulo(nome);
+    }
+
+    public Professor getByEmail(String email) {
+        return professorRepository.findByEmail(email);
     }
 }

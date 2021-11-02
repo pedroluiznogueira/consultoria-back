@@ -33,9 +33,9 @@ public class ProfessorController {
 
     // cadastrar professor
     @PostMapping("create")
-    public ResponseEntity<StatusResponse> insertProfessor(@RequestBody Professor professor) {
-        StatusResponse statusResponse = professorService.insertProfessor(professor);
-        return new ResponseEntity<StatusResponse>(statusResponse, HttpStatus.OK);
+    public ResponseEntity<Professor> insertProfessor(@RequestBody Professor professor) {
+        Professor prof = professorService.insertProfessor(professor);
+        return new ResponseEntity<Professor>(prof, HttpStatus.OK);
     }
 
 
@@ -59,5 +59,11 @@ public class ProfessorController {
     public ResponseEntity<List<Professor>> pesquisar(@RequestBody Professor professor) {
         List<Professor> professores = professorService.pesquisar(professor.getNome());
         return new ResponseEntity<List<Professor>>(professores, HttpStatus.OK);
+    }
+
+    @PostMapping("find/email")
+    public ResponseEntity<Professor> getByEmail(@RequestBody Professor professor) {
+        Professor prof = professorService.getByEmail(professor.getEmail());
+        return new ResponseEntity<Professor>(prof, HttpStatus.OK);
     }
 }
