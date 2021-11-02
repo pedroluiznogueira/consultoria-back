@@ -22,6 +22,8 @@ public class Usuario {
     private String tipo;
     private String token;
     private String imagem;
+    private String manchete;
+    private String biografia;
 
     @OneToMany(mappedBy = "usuario")
     private List<Wishlist> wishlist;
@@ -160,5 +162,21 @@ public class Usuario {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public String getManchete() {
+        return manchete;
+    }
+
+    public void setManchete(String manchete) {
+        this.manchete = manchete;
+    }
+
+    public String getBiografia() {
+        return biografia;
+    }
+
+    public void setBiografia(String biografia) {
+        this.biografia = biografia;
     }
 }
