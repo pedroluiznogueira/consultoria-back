@@ -11,4 +11,6 @@ import java.util.List;
 public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     @Query("select n from Professor n where n.nome like %?1%")
     List<Professor> findServicoByTitulo(String nome);
+
+    Professor findByEmail(String email);
 }

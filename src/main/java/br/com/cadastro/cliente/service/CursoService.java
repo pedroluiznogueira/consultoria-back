@@ -18,7 +18,7 @@ public class CursoService {
     @Autowired
     CursoRepository cursoRepository;
     @Autowired
-    ProfessorRepository clienteRepository;
+    ProfessorRepository professorRepository;
 
     // todos os cursos
     public List<Curso> getCursos(){
@@ -37,7 +37,7 @@ public class CursoService {
 
     // cadastrar curso
     public StatusResponse insertCurso(Curso novoCurso){
-        Professor professor = clienteRepository.getById(novoCurso.getProfessor().getId());
+        Professor professor = professorRepository.findByEmail(novoCurso.getProfessor().getEmail());
         List<Curso> cursos = cursoRepository.findAll();
 
         for (Curso curso : cursos){
