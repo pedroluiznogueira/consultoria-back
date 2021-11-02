@@ -12,6 +12,7 @@ public class CursoModulo {
     private String titulo;
     private String conteudoPrincipal;
     private String imagem;
+    private String videoId;
 
     @ManyToOne
     @JoinColumn(name = "curso_id")
@@ -20,11 +21,12 @@ public class CursoModulo {
     public CursoModulo() {
     }
 
-    public CursoModulo(Long id, String titulo, String conteudoPrincipal, String imagem, Curso curso) {
+    public CursoModulo(Long id, String titulo, String conteudoPrincipal, String imagem, String videoId, Curso curso) {
         this.id = id;
         this.titulo = titulo;
         this.conteudoPrincipal = conteudoPrincipal;
         this.imagem = imagem;
+        this.videoId = videoId;
         this.curso = curso;
     }
 
@@ -66,5 +68,13 @@ public class CursoModulo {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
     }
 }
