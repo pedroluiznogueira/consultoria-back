@@ -69,7 +69,7 @@ public class CursoController {
         return new ResponseEntity<List<Curso>>(cursos, HttpStatus.OK);
     }
 
-    @PostMapping("teste")
+    @PostMapping("add-curso-wish")
     public ResponseEntity<StatusResponse> addCursoWish(@RequestBody Cursowishlist cw) {
         StatusResponse resp = cursoService.addCursoWish(cw);
         return new ResponseEntity<>(resp, HttpStatus.OK);

@@ -6,6 +6,7 @@ public class UsuarioLogin {
     private String email;
     private String senha;
     private String token;
+    private String imagem;
 
     public UsuarioLogin() {
     }
@@ -47,5 +48,13 @@ public class UsuarioLogin {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

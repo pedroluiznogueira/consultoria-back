@@ -25,10 +25,9 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(lista, HttpStatus.OK);
     }
 
-    @PostMapping("/find/token")
-    public ResponseEntity<Usuario> getUsuarioByToken(@RequestBody Usuario usuarioToken) {
-        Usuario usuario = usuarioService.getUsuarioByToken(usuarioToken.getToken());
-        System.out.println(usuario);
+    @PostMapping("find/email")
+    public ResponseEntity<Usuario> getUsuarioByEmail(@RequestBody Usuario usuarioEmail) {
+        Usuario usuario = usuarioService.getUsuarioByEmail(usuarioEmail.getEmail());
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
 

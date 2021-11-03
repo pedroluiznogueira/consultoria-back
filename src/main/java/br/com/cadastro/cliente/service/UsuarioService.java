@@ -24,8 +24,8 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Usuario getUsuarioByToken(String token) {
-        return usuarioRepository.findByToken(token).orElseThrow(IllegalArgumentException::new);
+    public Usuario getUsuarioByEmail(String email) {
+        return usuarioRepository.findByEmail(email).orElseThrow(IllegalArgumentException::new);
     }
 
     // cadastrando um usuário
@@ -68,6 +68,7 @@ public class UsuarioService {
                 // settando token e nome do usuarioLogin à ser retornado, já que o nome de usuário é mesmo já que passou em todas as verificações
                 usuarioLogin.get().setToken(authHeader);
                 usuarioLogin.get().setNome(usuario.get().getNome());
+                usuarioLogin.get().setImagem(usuario.get().getImagem());
 
                 return usuarioLogin;
             }

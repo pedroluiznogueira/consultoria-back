@@ -33,8 +33,11 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/logar").permitAll() // não preciso de token, acessa o banco para verificar
-                .antMatchers("/cadastrar").permitAll() // não preciso de token, acessa o banco para verificar
+                .antMatchers("/login").permitAll() // não preciso de token, acessa o banco para verificar
+                .antMatchers("/cadastro").permitAll() // não preciso de token, acessa o banco para verificar
+                .antMatchers("/find/email").permitAll()
+                .antMatchers("/wishlist/create").permitAll()
+                .antMatchers("/uploadFile").permitAll()
                 .anyRequest().authenticated() // o resto eu quero que precise de token
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
