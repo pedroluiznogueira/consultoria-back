@@ -21,6 +21,12 @@ public class ProfessorService {
     public Professor insertProfessor(Professor novoProfessor) {
         List<Professor> professores = professorRepository.findAll();
 
+        for (Professor prof : professores) {
+            if (novoProfessor.getUsuario().getId() == prof.getUsuario().getId()) {
+                return null;
+            }
+        }
+
         professorRepository.save(novoProfessor);
         return novoProfessor;
 

@@ -31,6 +31,9 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Pedido> pedidos;
 
+    @OneToOne(mappedBy = "usuario")
+    private Professor professor;
+
     public Usuario() {
     }
 

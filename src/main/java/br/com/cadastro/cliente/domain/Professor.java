@@ -31,15 +31,20 @@ public class Professor {
     @JoinColumn(name = "professor_id")
     private List<Curso> cursos;
 
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     public Professor() {
 
     }
 
-    public Professor(Long id, String nome, String sobrenome, String email) {
+    public Professor(Long id, String nome, String sobrenome, String email, Usuario usuario) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
+        this.usuario = usuario;
     }
 
     public Long getId() {
@@ -119,5 +124,13 @@ public class Professor {
                 ", sobrenome='" + sobrenome + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
