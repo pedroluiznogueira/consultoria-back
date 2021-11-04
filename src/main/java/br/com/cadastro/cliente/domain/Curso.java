@@ -32,8 +32,7 @@ public class Curso {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @OneToMany
-    @JoinColumn(name = "curso_id")
+    @OneToMany(mappedBy = "curso")
     private List<CursoModulo> cursoModulos;
 
     @ManyToMany
