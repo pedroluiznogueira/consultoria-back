@@ -1,9 +1,6 @@
 package br.com.cadastro.cliente.service;
 
-import br.com.cadastro.cliente.domain.Cursowishlist;
-import br.com.cadastro.cliente.domain.Professor;
-import br.com.cadastro.cliente.domain.Curso;
-import br.com.cadastro.cliente.domain.StatusResponse;
+import br.com.cadastro.cliente.domain.*;
 import br.com.cadastro.cliente.repository.ProfessorRepository;
 import br.com.cadastro.cliente.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +34,6 @@ public class CursoService {
 
     // cadastrar curso
     public Curso insertCurso(Curso novoCurso){
-        Professor professor = professorRepository.findByEmail(novoCurso.getProfessor().getEmail());
-        List<Curso> cursos = cursoRepository.findAll();
-
-        novoCurso.setProfessor(professor);
-
         cursoRepository.save(novoCurso);
         return novoCurso;
     }
@@ -105,5 +97,14 @@ public class CursoService {
         }
 
         return cursosDb;
+    }
+
+    public StatusResponse addCursoPedido(CursopedidoDTO cpDTO) {
+
+        cpDTO.getPedido().getCursos().add(cpDTO.getCurso());
+        cpDTO.getCurso().getPedidos().add(cpDTO.getPedido());
+
+        cursoRepository.save(cpDTO.getCurso());
+        return new StatusResponse("Curso adicionado ao Pedido", "sucesso");
     }
 }

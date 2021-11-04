@@ -27,8 +27,7 @@ public class Professor {
 
     private String sobre;
 
-    @OneToMany
-    @JoinColumn(name = "professor_id")
+    @OneToMany(mappedBy = "professor")
     private List<Curso> cursos;
 
     @OneToOne

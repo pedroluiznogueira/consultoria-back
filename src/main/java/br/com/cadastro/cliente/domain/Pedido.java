@@ -17,10 +17,19 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    @JsonIgnore
     private Usuario usuario;
 
     private Double valorTotal;
+
+    public Pedido() {
+
+    }
+
+    public Pedido(Long id, Usuario usuario, Double valorTotal) {
+        this.id = id;
+        this.usuario = usuario;
+        this.valorTotal = valorTotal;
+    }
 
     public Long getId() {
         return id;
@@ -28,14 +37,6 @@ public class Pedido {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
     }
 
     public Usuario getUsuario() {
@@ -52,5 +53,13 @@ public class Pedido {
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
     }
 }

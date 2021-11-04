@@ -7,6 +7,7 @@ import br.com.cadastro.cliente.repository.CursoRepository;
 import br.com.cadastro.cliente.repository.PedidoRepository;
 import br.com.cadastro.cliente.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,32 +32,9 @@ public class PedidoService {
     @Autowired
     CursoRepository cursoRepository;
 
-    public Usuario insertPedido(Usuario usuario){
-        Usuario newUsuario = usuarioRepository.findByEmail(usuario.getEmail()).orElseThrow(IllegalArgumentException::new);
+    public Pedido createPedido(Pedido pedido) {
+        return pedidoRepository.save(pedido);
 
-        newUsuario.getPedidos().addAll(usuario.getPedidos()
-                .stream()
-                .map(pedido -> {
-                    List<Curso> cursos = cursoService.cursosByCursos(pedido.getCursos());
-
-                    Pedido newPedido = new Pedido();
-                    newPedido.setUsuario(newUsuario);
-                    newPedido.setCursos(cursos);
-                    newPedido.setValorTotal(pedido.getValorTotal());
-
-                    pedidoRepository.save(newPedido);
-
-                    for (Curso curso: cursos){
-                        curso.getPedidos().add(newPedido);
-
-                        cursoRepository.save(curso);
-                    }
-
-                    return  newPedido;
-                })
-                .collect(Collectors.toList()));
-
-        return usuarioRepository.save(newUsuario);
     }
 
 

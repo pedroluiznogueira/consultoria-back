@@ -86,4 +86,17 @@ public class CursoController {
         List<Curso> cursos = cursoService.getCursosWishAll(idsCursos);
         return new ResponseEntity<>(cursos, HttpStatus.OK);
     }
+
+    @PostMapping("add-curso-pedido")
+    public ResponseEntity<StatusResponse> addCursoPedido(@RequestBody Cursopedido cp) {
+        StatusResponse resp = new StatusResponse();
+        CursopedidoDTO cpDTO = new CursopedidoDTO();
+
+        for (Curso curso : cp.getCursos()) {
+            cpDTO.setCurso(curso);
+            cpDTO.setPedido(cp.getPedido());
+            resp = cursoService.addCursoPedido(cpDTO);
+        }
+        return new ResponseEntity<>(resp, HttpStatus.OK);
+    }
 }

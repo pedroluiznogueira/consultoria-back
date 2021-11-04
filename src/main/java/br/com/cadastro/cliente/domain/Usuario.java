@@ -151,14 +151,6 @@ public class Usuario {
         this.token = token;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
     public String getSobrenome() {
         return sobrenome;
     }
