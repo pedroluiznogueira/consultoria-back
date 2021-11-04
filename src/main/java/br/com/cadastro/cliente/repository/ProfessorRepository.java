@@ -1,6 +1,7 @@
 package br.com.cadastro.cliente.repository;
 
 import br.com.cadastro.cliente.domain.Professor;
+import br.com.cadastro.cliente.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,6 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long> {
     List<Professor> findServicoByTitulo(String nome);
 
     Professor findByEmail(String email);
+
+    Professor findByUsuarioId(Long id);
 }

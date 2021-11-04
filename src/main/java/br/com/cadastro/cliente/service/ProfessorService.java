@@ -2,6 +2,7 @@ package br.com.cadastro.cliente.service;
 
 import br.com.cadastro.cliente.domain.Professor;
 import br.com.cadastro.cliente.domain.StatusResponse;
+import br.com.cadastro.cliente.domain.Usuario;
 import br.com.cadastro.cliente.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -68,5 +69,9 @@ public class ProfessorService {
 
     public Professor getByEmail(String email) {
         return professorRepository.findByEmail(email);
+    }
+
+    public Professor getProfessorByUsuario(Usuario usuario) {
+        return professorRepository.findByUsuarioId(usuario.getId());
     }
 }

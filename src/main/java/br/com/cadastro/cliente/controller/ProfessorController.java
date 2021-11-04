@@ -2,6 +2,7 @@ package br.com.cadastro.cliente.controller;
 
 import br.com.cadastro.cliente.domain.Professor;
 import br.com.cadastro.cliente.domain.StatusResponse;
+import br.com.cadastro.cliente.domain.Usuario;
 import br.com.cadastro.cliente.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,12 @@ public class ProfessorController {
     @PostMapping("create")
     public ResponseEntity<Professor> insertProfessor(@RequestBody Professor professor) {
         Professor prof = professorService.insertProfessor(professor);
+        return new ResponseEntity<Professor>(prof, HttpStatus.OK);
+    }
+
+    @PostMapping("byUsuario")
+    public ResponseEntity<Professor> professorByUsuario(@RequestBody Usuario usuario) {
+        Professor prof = professorService.getProfessorByUsuario(usuario);
         return new ResponseEntity<Professor>(prof, HttpStatus.OK);
     }
 
