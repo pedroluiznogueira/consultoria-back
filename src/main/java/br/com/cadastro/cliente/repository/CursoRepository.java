@@ -1,5 +1,6 @@
 package br.com.cadastro.cliente.repository;
 import br.com.cadastro.cliente.domain.Curso;
+import br.com.cadastro.cliente.domain.Pedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -18,5 +19,6 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
     @Query(value = "select * from Curso where id = ?1", nativeQuery = true)
     Curso findCursoById(Long id);
 
-//    select * from curso where id = 2 or id = 3;
+    @Query(value = "select curso_id from curso_pedido where pedido_id = ?1", nativeQuery = true)
+    List<Long> findCursosIdByPedidoId(Long id);
 }

@@ -107,4 +107,28 @@ public class CursoService {
         cursoRepository.save(cpDTO.getCurso());
         return new StatusResponse("Curso adicionado ao Pedido", "sucesso");
     }
+
+
+    public List<Long> findCursosIdByPedidosIds(List<Pedido> pedidos) {
+        List<Long> ids = new ArrayList<>();
+
+        for (Pedido pedido : pedidos) {
+            List<Long> listaId = cursoRepository.findCursosIdByPedidoId(pedido.getId());
+            for (Long id : listaId) {
+                ids.add(id);
+            }
+        }
+
+        return ids;
+    }
+
+    public List<Curso> getCursosPedidosAll(List<Long> idsCursos) {
+        List<Curso> cursos = new ArrayList<>();
+
+        for (Long id : idsCursos) {
+            Curso curso = cursoRepository.findCursoById(id);
+            cursos.add(curso);
+        }
+        return cursos;
+    }
 }

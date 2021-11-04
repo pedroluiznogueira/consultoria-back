@@ -99,4 +99,16 @@ public class CursoController {
         }
         return new ResponseEntity<>(resp, HttpStatus.OK);
     }
+
+    @PostMapping("cursos/pedido")
+    public ResponseEntity<List<Long>> getCursosPedidos(@RequestBody List<Pedido> pedidos) {
+        List<Long> ids = cursoService.findCursosIdByPedidosIds(pedidos);
+        return new ResponseEntity<>(ids, HttpStatus.OK);
+    }
+
+    @PostMapping("cursos/pedido/all")
+    public ResponseEntity<List<Curso>> getCursosPedidosAll(@RequestBody List<Long> idsCursos) {
+        List<Curso> cursos = cursoService.getCursosPedidosAll(idsCursos);
+        return new ResponseEntity<>(cursos, HttpStatus.OK);
+    }
 }
