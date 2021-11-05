@@ -11,6 +11,7 @@ public class CursoModulo {
 
     private String titulo;
     private String conteudoPrincipal;
+    private String conteudoPrincipalDois;
     private String imagem;
     private String videoId;
 
@@ -21,10 +22,11 @@ public class CursoModulo {
     public CursoModulo() {
     }
 
-    public CursoModulo(Long id, String titulo, String conteudoPrincipal, String imagem, String videoId, Curso curso) {
+    public CursoModulo(Long id, String titulo, String conteudoPrincipal, String conteudoPrincipalDois, String imagem, String videoId, Curso curso) {
         this.id = id;
         this.titulo = titulo;
         this.conteudoPrincipal = conteudoPrincipal;
+        this.conteudoPrincipalDois = conteudoPrincipalDois;
         this.imagem = imagem;
         this.videoId = videoId;
         this.curso = curso;
@@ -52,6 +54,14 @@ public class CursoModulo {
 
     public void setConteudoPrincipal(String conteudoPrincipal) {
         this.conteudoPrincipal = conteudoPrincipal;
+    }
+
+    public String getConteudoPrincipalDois() {
+        return conteudoPrincipalDois;
+    }
+
+    public void setConteudoPrincipalDois(String conteudoPrincipalDois) {
+        this.conteudoPrincipalDois = conteudoPrincipalDois;
     }
 
     public String getImagem() {
