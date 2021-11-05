@@ -52,17 +52,7 @@ public class CursoService {
 
     // atualizar curso
     public StatusResponse updateCurso(Curso novoCurso) {
-        Curso curso = cursoRepository.findById(novoCurso.getId()).get();
-
-        if (novoCurso.getTitulo() == "" || novoCurso.getDescricao() == "" || novoCurso.getValor() == null){
-            return new StatusResponse("Dados invalidos", "erro");
-        }
-
-        curso.setTitulo(novoCurso.getTitulo());
-        curso.setDescricao(novoCurso.getDescricao());
-        curso.setValor(novoCurso.getValor());
-
-        cursoRepository.save(curso);
+        cursoRepository.save(novoCurso);
         return new StatusResponse("Serviço alterado com sucesso", "sucesso");
     }
 
