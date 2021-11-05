@@ -39,12 +39,7 @@ public class CursoService {
     }
 
     // excluir curso
-    public StatusResponse dropCurso(long idServico){
-        List<Curso> cursos = cursoRepository.findAll();
-
-        if (cursoRepository.findById(idServico) == null){
-            return new StatusResponse("Serviço não existe", "erro");
-        }
+    public StatusResponse dropCurso(Long idServico){
 
         cursoRepository.deleteById(idServico);
         return new StatusResponse("Serviço deletado com sucesso", "sucesso");

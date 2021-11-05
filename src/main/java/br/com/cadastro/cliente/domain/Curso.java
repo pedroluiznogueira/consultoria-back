@@ -32,7 +32,7 @@ public class Curso {
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @OneToMany(mappedBy = "curso")
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
     private List<CursoModulo> cursoModulos;
 
     @ManyToMany
