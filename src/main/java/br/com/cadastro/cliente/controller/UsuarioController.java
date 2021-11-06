@@ -1,5 +1,6 @@
 package br.com.cadastro.cliente.controller;
 
+import br.com.cadastro.cliente.domain.Confirmacao;
 import br.com.cadastro.cliente.domain.Usuario;
 import br.com.cadastro.cliente.domain.UsuarioLogin;
 import br.com.cadastro.cliente.service.UsuarioService;
@@ -43,6 +44,12 @@ public class UsuarioController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(usuarioService.cadastrarUsuario(usuario));
+    }
+
+    @PostMapping("confirmar")
+    public Confirmacao confirmado(@RequestBody Confirmacao confirmacao) {
+        return usuarioService.confirmado(confirmacao);
+
     }
 
 }

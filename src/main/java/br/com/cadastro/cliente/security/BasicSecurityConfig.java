@@ -39,6 +39,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/wishlist/create").permitAll()
                 .antMatchers("/uploadFile").permitAll()
                 .antMatchers("/email/cadastro").permitAll()
+                .antMatchers("/curso/cursos").permitAll()
+                .antMatchers("/curso/create").permitAll()
+                .antMatchers("/confirmar").permitAll()
                 .anyRequest().authenticated() // o resto eu quero que precise de token
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

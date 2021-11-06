@@ -1,9 +1,7 @@
 package br.com.cadastro.cliente.service;
 
-import br.com.cadastro.cliente.domain.Curso;
-import br.com.cadastro.cliente.domain.StatusResponse;
-import br.com.cadastro.cliente.domain.Usuario;
-import br.com.cadastro.cliente.domain.UsuarioLogin;
+import br.com.cadastro.cliente.domain.*;
+import br.com.cadastro.cliente.repository.ConfirmacaoRepository;
 import br.com.cadastro.cliente.repository.UsuarioRepository;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +17,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private ConfirmacaoRepository confirmacaoRepository;
 
     public List<Usuario> getUsuarios() {
         return usuarioRepository.findAll();
@@ -74,5 +75,10 @@ public class UsuarioService {
             }
         }
         return null;
+    }
+
+    public Confirmacao confirmado(Confirmacao confirmacao) {
+        confirmacaoRepository.save(confirmacao);
+        return confirmacao;
     }
 }
