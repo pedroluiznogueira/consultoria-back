@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-@RequestMapping("/testapp")
+@RequestMapping("/email")
 @CrossOrigin("*")
 @Controller
 public class EmailSender {
@@ -27,7 +27,7 @@ public class EmailSender {
     @Autowired
     private JavaMailSender sender;
 
-    @RequestMapping("/getdetails")
+    @RequestMapping("/fale-conosco")
     public @ResponseBody
     Details sendMail(@RequestBody Details details) throws Exception {
 
@@ -37,9 +37,9 @@ public class EmailSender {
                 StandardCharsets.UTF_8.name());
 
         Map<String, Object> model = new HashMap<String, Object>();
-        model.put("name",details.getName());
-        model.put("age",details.getAge());
-        model.put("country",details.getCountry());
+        model.put("name", details.getName());
+        model.put("age", details.getAge());
+        model.put("country", details.getCountry());
 
         Context context = new Context();
         context.setVariables(model);
@@ -47,8 +47,39 @@ public class EmailSender {
 
         try {
             helper.setTo(details.getEmail());
-            helper.setText(html,true);
-            helper.setSubject("Test Mail");
+            helper.setText(html, true);
+            helper.setSubject("Fale Conosco - Udeyou");
+        } catch (javax.mail.MessagingException e) {
+            e.printStackTrace();
+        }
+        sender.send(message);
+
+        return details;
+
+    }
+
+    @RequestMapping("/cadastro")
+    public @ResponseBody
+    Details confirm(@RequestBody Details details) throws Exception {
+
+        MimeMessage message = sender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message,
+                MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+                StandardCharsets.UTF_8.name());
+
+        Map<String, Object> model = new HashMap<String, Object>();
+        model.put("msgUm", details.getName());
+        model.put("msgDois", details.getAge());
+        model.put("msgTres", details.getCountry());
+
+        Context context = new Context();
+        context.setVariables(model);
+        String html = templateEngine.process("confirm", context);
+
+        try {
+            helper.setTo(details.getEmail());
+            helper.setText(html, true);
+            helper.setSubject("Bem vindo(a) à Udeyou");
         } catch (javax.mail.MessagingException e) {
             e.printStackTrace();
         }

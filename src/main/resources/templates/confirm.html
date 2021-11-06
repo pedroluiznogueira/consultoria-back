@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Template</title>
+</head>
+<body>
+
+<h1>Este é um email de confirmação de cadastro no site da Udeyou</h1>
+<img src="https://udeyou.s3.sa-east-1.amazonaws.com/udeyou-logo.png" alt="udeyou-logo" style="width:400px;height:200px;"></img>
+
+<h2 th:text="${'É um prazer ter você conosco Sr(a).' + msgUm + ' bem vindo(a) à uma comunidade repleta de incentivos, técnicos e sociais. A Udeyou é uma plataforma de cursos online com o propósito de tanto gerar renda para professores, quanto levar conhecimento para aluno, mas mais importante, incentivar pessoas que não têm condições de comprar cursos ou entrar em graduações pagas, por meio de incentivos e cursos gratuitos! Faça parte desta história.'}"></h2>
+
+<p><b>Este e-mail tem suporte da Udeyou</b></p>
+<a href="https://consult-front.herokuapp.com/">Confirme seu Cadastro</a>
+
+</body>
+</html>

@@ -38,6 +38,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/find/email").permitAll()
                 .antMatchers("/wishlist/create").permitAll()
                 .antMatchers("/uploadFile").permitAll()
+                .antMatchers("/email/cadastro").permitAll()
                 .anyRequest().authenticated() // o resto eu quero que precise de token
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
