@@ -1,7 +1,6 @@
 package br.com.cadastro.cliente.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,13 +13,10 @@ public class Professor {
 
     private String imagem;
 
-    @NotNull
     private String email;
 
-    @NotNull
     private String nome;
 
-    @NotNull
     private String sobrenome;
 
     private String resumo;

@@ -3,7 +3,6 @@ package br.com.cadastro.cliente.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -17,15 +16,12 @@ public class Curso {
 
     private String imagem;
 
-    @NotNull
     private String titulo;
 
-    @NotNull
     private String descricao;
 
     private String requisitos;
 
-    @NotNull
     private Double valor;
 
     @ManyToOne
