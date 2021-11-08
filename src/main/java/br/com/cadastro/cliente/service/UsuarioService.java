@@ -45,7 +45,7 @@ public class UsuarioService {
     }
 
     // fazendo login do usuário
-    public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> usuarioLogin) {
+    public Optional<Usuario> logar(Optional<UsuarioLogin> usuarioLogin) {
         // vamos trabalhar a senha encriptada apartir do BCryptPasswordEncoder da classe BasicSecurityConfig
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -71,7 +71,7 @@ public class UsuarioService {
                 usuarioLogin.get().setNome(usuario.get().getNome());
                 usuarioLogin.get().setImagem(usuario.get().getImagem());
 
-                return usuarioLogin;
+                return usuario;
             }
         }
         return null;
